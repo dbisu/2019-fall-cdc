@@ -4,8 +4,8 @@ import os
 import sys
 import paramiko
 
-userList[ "root", "cdc" ]
-machines = [ ["www","/root/*flag"], ["crane", "/etc/ssh/*flag"] ["security", "/etc/ssh/*flag"] ["generator", "/etc/ssh/*flag"]]
+userList = [ "root", "cdc" ]
+machines = [ ["www","/root/*flag"] ] #, ["crane", "/etc/ssh/*flag"],["security", "/etc/ssh/*flag"], ["generator", "/etc/ssh/*flag"] ]
 numTeams = 30
 
 paramiko.util.log_to_file("demo_simple.log")
@@ -42,6 +42,8 @@ def tryDefaultCreds(machineName, machineIndex):
         except paramiko.SSHException as e:
             print("connection failed")
             print(e)
+        finally:
+            break
     print()
 
 def findMachines():
